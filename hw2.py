@@ -1,6 +1,6 @@
 
 
-# L =
+# Doesn't work but think I was on right track
 #
 def fibPow(n):
     # return pow(L(0,1), n)
