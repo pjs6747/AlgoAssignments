@@ -25,7 +25,6 @@ public class Primes {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter number less than 10000");
         int num = Integer.parseInt(scanner.nextLine());
         if (num < 10000) {
             printPrimes(num);
