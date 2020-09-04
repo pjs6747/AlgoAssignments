@@ -20,61 +20,30 @@ public class Planters {
        for (int i = 0; i < p; i++) {
            plants[i] = Integer.parseInt(input2[i]);
        }
-       quickSort(plants, 0, plants.length - 1);
 
         for (int i = 0; i < r; i++) {
             pots[i] = Integer.parseInt(input3[i]);
         }
-        quickSort(pots, 0, pots.length - 1);
 
         for (int i = 0; i < plants.length; i++) {
-           boolean failed = true;
+           int nextBiggestPot = -1;
+           int nextBiggestPotIndex = -1;
            for (int j = 0; j < pots.length; j++) {
-               if (pots[j] > plants[i]) {
-                   pots[j] = plants[i];
-                   failed = false;
-                   break;
+               int pot = pots[j];
+               if (pot > nextBiggestPot && pot > plants[i]) {
+                   nextBiggestPot = pot;
+                   nextBiggestPotIndex = j;
                }
            }
-           if (failed) {
+
+           if (nextBiggestPot == -1) {
                System.out.println("NO");
                System.exit(0);
            }
+           else {
+               plants[i] = nextBiggestPotIndex;
+           }
        }
        System.out.println("YES");
-    }
-
-    private static int partition(int arr[], int low, int high)
-    {
-        int pivot = arr[high];
-        int i = (low-1);
-        for (int j=low; j<high; j++)
-        {
-            if (arr[j] < pivot)
-            {
-                i++;
-
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-            }
-        }
-
-        int temp = arr[i+1];
-        arr[i+1] = arr[high];
-        arr[high] = temp;
-
-        return i+1;
-    }
-
-    private static void quickSort(int arr[], int low, int high)
-    {
-        if (low < high)
-        {
-            int pi = partition(arr, low, high);
-
-            quickSort(arr, low, pi-1);
-            quickSort(arr, pi+1, high);
-        }
     }
 }
